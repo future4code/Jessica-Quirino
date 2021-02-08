@@ -1,0 +1,142 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap');
+body{
+    background: #E4F4FA url(img/fundo.png) no-repeat top center;
+    font-family: poppins;
+    font-size:16px;
+    line-height:40px;
+    color: #333333;
+    margin:0;
+    padding:0;
+}
+
+#align{width:1000px;
+    margin:0 auto;
+    margin-top:50px;
+    text-align:center;}
+
+    h2{
+        font-size:30px;
+    }
+
+    #botao{
+    width:150px;
+background: #FEAD64;
+border-radius:20px;
+position:fixed;
+top:0;
+right:50px;
+text-align:center;}
+#botao a{color: white;
+text-decoration:none}
+
+
+#cabecalho{width:1000px;
+    margin:0 auto;
+    padding-top:50px;
+    padding-bottom:50px;
+    text-align:right;
+
+}
+#cabecalho h1{ 
+    font-size:120px;
+    letter-spacing:10px;
+    color:white;
+    line-height:10px;
+    font-weight:800;
+}
+#cabecalho h2{
+    font-size:80px;
+    letter-spacing:5px;
+    color:#E4F4FA;
+    font height:600;
+    text-shadow: 2px 3px #333333;
+}
+#menu, #social{width:99%;
+    padding:0.5%;
+    margin:0;
+background: #E7CFCF;
+text-align:center;
+margin-top:25px;
+}
+
+#menu a{font-size:18px;
+    text-transform:uppercase;
+    letter-spacing:3px;
+color: #333333;
+text-decoration:none;
+margin:10px;
+box-shadow: inset 0 -.8em #E4F4FA;
+-webkit-transition: all 1s ease-in;
+-moz-transition: all 1s ease-in;
+-ms-transition: all 1s ease-in;
+-o-transition: all 1s ease-in;
+transition: all 1s ease-in;}
+
+#menu a:hover{
+color: #ffffff;
+box-shadow: inset 0 -.8em #A7DBEF;}
+
+
+#social img {
+    max-width:20px;
+    padding:20px;
+     
+}
+
+#galeria{
+    width:1000px;
+margin:0 auto;
+margin-top:50px;
+text-align:center;
+ 
+
+}
+
+.bloco{width:300px;
+ margin:10px;
+ float:left;}
+ .bloco img{max-width:300px;
+height:auto;}
+ .titulo-produto{
+     background:#D0E89B;
+
+ }
+
+ #texto{width:1000px;
+    margin:0 auto;
+    padding-top:50px;
+text-align:justify}
+
+#texto{width:430px;
+text-align:center;}
+
+ td {
+   width:94%;
+   background: white;
+   padding:3%;
+  }
+  th{ background:#D7EFC0;
+padding:50px}
+
+  table img{max-width:200px;}
+
+  ol {
+    background: #ffffff;
+    padding: 20px;
+  }
+
+  input{background: white;
+    border:2px solid  #E7CFCF;
+    padding:5px;
+} 
+button{
+    background: #D1EDB6;
+    border-radius:10px;
+    font-size:20px;
+    padding:10px;
+    font-weight:800;
+    border:0;
+    margin:10px;
+}
+ .cleaning{clear:both;}
