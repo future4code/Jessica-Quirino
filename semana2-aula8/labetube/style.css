@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display&family=Open+Sans&display=swap');
+
+body {
+	background: #ffffff url(img/fdo.png) no-repeat top center;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	line-height: 40px;
+	color: #333333;
+	margin: 0;
+	padding: 0;
+  
+}
+
+nav{background: #000000;
+width:100%;
+color:#ffffff;
+}
+
+nav a{color:white;
+	-webkit-transition: all 1s ease-in;
+	-moz-transition: all 1s ease-in;
+	-ms-transition: all 1s ease-in;
+	-o-transition: all 1s ease-in;
+	transition: all 1s ease-in;
+text-decoration:none;}
+
+    nav a:hover{color:red;}
+
+footer{background: #000000;
+    width:98%;
+    padding:1%;
+    color:#ffffff;
+    position: relative;
+    bottom:0;
+    
+    margin-top:20px;
+    text-align:right;
+}
+
+h1{
+    font-family: 'Big Shoulders Display', cursive;
+    font-size:40px;
+    text-align:center;
+}
+
+h2 {
+	font-size: 18px;
+	text-align: center;
+    color:white;
+}
+
+
+
+#galeria {
+	width: 1100px;
+	margin: 0px auto;
+	margin-top: 20px;
+	display: flex;
+	flex-direction: row;
+justify-content:space-between ;
+flex-wrap: wrap;
+}
+
+.bloco {
+	width: 270px;
+  
+}
+
+.bloco img {
+	max-width: 270px;
+	height: auto;
+	-webkit-transition: all 1s ease-in;
+	-moz-transition: all 1s ease-in;
+	-ms-transition: all 1s ease-in;
+	-o-transition: all 1s ease-in;
+	transition: all 1s ease-in;
+    
+    background:black;
+}
+
+.bloco img:hover {
+	opacity:0.6;
+}
+
+.titulo{	
+font-size:18px;
+text-transform:uppercase;
+text-align:center;
+font-family: 'Big Shoulders Display', cursive;}
+
+button {
+	background: #000000;
+	color: white;
+	font-size: 14px;
+	padding: 10px;
+	border: 0;
+	margin: 10px;
+}
+
+ 
+@media (min-width:300px) and (max-width:1050px) {
+	
+
+	#galeria {
+    width:96%;
+    padding:2%;
+    margin:0;
+        flex-wrap:wrap;
+	
+		justify-content: center;
+        height:auto;
+       
+	}
+
+	.bloco {
+		width: 250px;
+	}
+	.bloco img {
+		max-width: 250px;
+	}
+}
