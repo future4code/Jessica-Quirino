@@ -1,0 +1,110 @@
+
+
+body {
+	background: #ffffff no-repeat top center;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	line-height: 40px;
+	color: #333333;
+	margin: 0;
+	padding: 0;
+}
+
+nav {
+	background: red;
+	width: 100%;
+	height: 60px;
+}
+
+#sessao1 {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.bloco1 {
+	width: 30%;
+	margin: 1%;
+	height: 200px;
+	background: blue;
+}
+
+.bloco2 {
+	width: 30%;
+	margin: 1%;
+	height: 200px;
+	background: yellow;
+}
+
+.bloco3 {
+	width: 30%;
+	margin: 1%;
+	height: 200px;
+	background: green;
+}
+
+#sessao2 {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.bloco4 {
+	width: 48%;
+	margin: 0.5%;
+	height: 400px;
+	background: black;
+}
+
+#sessao3 {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.bloco5 {
+	width: 31%;
+	margin: 0.3%;
+	height: 200px;
+	border: 1px solid black;
+}
+
+.bloco6 {
+	width: 31%;
+	margin: 0.3%;
+	height: 200px;
+	border: 1px solid black;
+}
+
+.cleaning {
+	clear: both
+}
+
+@media (min-width:300px) and (max-width:1050px) {
+	.bloco1,
+	.bloco2,
+	.bloco5 {
+		width: 47.7%;
+		margin: 1%;
+		padding: 0;
+	}
+	.bloco3,
+	.bloco6 {
+		width: 99%;
+	}
+}
+
