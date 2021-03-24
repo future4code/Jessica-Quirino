@@ -2,6 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import axios from "axios";
 
+const Caixa = styled.div`
+  width: 60%;
+  padding: 5%;
+  margin: 0px auto;
+  border: 2px dotted black;
+`;
+
 const Input = styled.input`
   padding: 10px;
   margin: 10px;
@@ -9,14 +16,21 @@ const Input = styled.input`
   border: 2px solid black;
   display: flex;
   width: 88%;
+  font-family: "Montserrat", sans-serif;
 `;
 
 const Botao = styled.button`
   margin: 10px;
+  padding: 10px;
   background: black;
   color: white;
-  border: 0;
-`;
+  font-family: "Montserrat", sans-serif;
+  border: 1px solid black;
+  margin-bottom:40px;
+  transition: 1s;
+  :hover{background: #e8e8e8;
+  color:black;
+  border: 1px solid black;`;
 
 class NewUser extends React.Component {
   state = {
@@ -39,8 +53,9 @@ class NewUser extends React.Component {
     };
 
     axios
-      .get(
+      .post(
         "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users",
+        body,
         {
           headers: {
             Authorization: "Jessica-Alcantara-Quirino-Cruz"
@@ -51,7 +66,6 @@ class NewUser extends React.Component {
       .then((res) => {
         this.setState({ inputName: "" });
         this.setState({ inputEmail: "" });
-        this.createUsers();
         alert("Cadastrado com sucesso!");
       })
       .catch((err) => {
@@ -63,24 +77,25 @@ class NewUser extends React.Component {
   render() {
     return (
       <div>
-        <label>
-          nome
-          <Input
-            value={this.state.inputName}
-            onChange={this.onChangeInputname}
-            placeholder={"digite aqui"}
-          />
-        </label>
-
-        <label>
-          email
-          <Input
-            value={this.state.inputEmail}
-            onChange={this.onChangeInputemail}
-            placeholder={"digite aqui"}
-          />
-        </label>
-        <Botao onClick={this.createUsers}>salvar</Botao>
+        <Caixa>
+          <label>
+            nome
+            <Input
+              value={this.state.inputName}
+              onChange={this.onChangeInputname}
+              placeholder={"digite aqui"}
+            />
+          </label>
+          <label>
+            email
+            <Input
+              value={this.state.inputEmail}
+              onChange={this.onChangeInputemail}
+              placeholder={"digite aqui"}
+            />
+          </label>
+          <Botao onClick={this.createUsers}>salvar</Botao>
+        </Caixa>
       </div>
     );
   }
