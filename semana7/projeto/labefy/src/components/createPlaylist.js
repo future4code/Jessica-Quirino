@@ -57,9 +57,10 @@ const Box = styled.div`
   padding: 5%;
   margin: 0px auto;
   border: 3px dotted black;
-margin-top:8%;
+margin-top:5%;
 margin-bottom:8%;
 `;
+
 
 const Input = styled.input`
   padding: 10px;

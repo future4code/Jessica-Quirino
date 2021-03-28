@@ -26,7 +26,7 @@ body {
   }
 
 h2{font-size:40px;
-margin-top:50px;
+margin-top:80px;
 animation: bounce-top 0.9s both;}
 
 @keyframes bounce-top {  
@@ -89,7 +89,7 @@ const Header = styled.div`
 `;
 
 const Logo = styled.div`
-  width: 250px;
+  width: 200px;
 color: white;
 padding-top:5px;
 font-size:25px;
@@ -118,7 +118,7 @@ class App extends React.Component {
       this.setState({ button: "Crie sua playlist" });
     } else if (this.state.page === "playlists") {
       this.setState({ page: "createPlaylist" });
-      this.setState({ button: "Veja suas playlists" });
+      this.setState({ button: "playlists" });
     }
   };
 
@@ -132,6 +132,7 @@ class App extends React.Component {
         return <div></div>;
     }
   };
+  
 
   render() {
   
