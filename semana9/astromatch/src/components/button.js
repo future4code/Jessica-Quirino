@@ -17,13 +17,13 @@ const ButtonNo = styled.div`
   height: 50px;
   border: 2px solid #25677a;
   color: #25677a;
-  transition: 2s ease-out;
+  transition: 0.5s ease-out;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   :hover {
-    background: red;
+    background: #25677a;
     color: white;
     border: 2px solid white;
   }
@@ -32,28 +32,30 @@ const ButtonYes = styled.div`
   width: 50px;
   height: 50px;
   border: 2px solid #f53486;
-  color: #f53486;
-  transition: 2s ease-out;
+  color: #ffa9a9;
+  transition: 0.5s ease-out;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   :hover {
-    background: green;
+    background: #f53486;
     color: white;
     border: 2px solid white;
   }
 `;
 
 function ButtonChoice(props) {
+
+  console.log(props.funct)
   const body = {
     id: props.userData.id,
     choice: true
   };
 
-  // const [body, setBody] = useState({});
 
-  chooseProfile = async (id, choice) => {
+ 
+  const chooseProfile = async (id, choice) => {
     try {
       const res = await axios.post(
         "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/jessica-alcantara-quirino/choose-person",
@@ -64,18 +66,26 @@ function ButtonChoice(props) {
         }
       );
 
-      console.log(funcionou);
-    } catch (err) {
+      console.log("funcionou");
+     ;
+    } 
+    
+    catch (err) {
       console.log(err);
     }
+  };
+
+  const rejectProfile = () => {
+    console.log("no");
+    
   };
 
   return (
     <div>
       <ButtonSection>
-        {/* <ButtonNo onClick={rejectProfile}>
+        <ButtonNo onClick={rejectProfile}>
           <FontAwesomeIcon icon="minus-circle" />
-        </ButtonNo> */}
+        </ButtonNo>
         <ButtonYes onClick={chooseProfile}>
           <FontAwesomeIcon icon="heart" />
         </ButtonYes>

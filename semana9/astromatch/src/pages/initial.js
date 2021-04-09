@@ -6,7 +6,7 @@ import axios from "axios";
 
 function Initial() {
   const [userProfile, setProfile] = useState({});
-  getProfile = async () => {
+   const getProfile = async () => {
     try {
       const res = await axios.get(
         "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/jessica-alcantara-quirino/person"
@@ -15,10 +15,11 @@ function Initial() {
     } catch (err) {
       console.log(err);
     }
+    
   };
   useEffect(() => {
     getProfile();
-  }, []);
+  }, [""]);
 
   return (
     <div>
