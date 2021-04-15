@@ -1,9 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
+import {Link} from 'react-scroll'
+import ApplicationForm from "./applicationForm"
+import useRequestData from '../hooks/useRequest'
+
+
 
 const Section = styled.div`
 background: #180E3B;
-width:100vw;
+width:100vwvw;
 padding: 10vh 0 10vh 0;
 margin-top:10vh;
 display:flex;
@@ -35,8 +40,8 @@ background-position: left 5px bottom 50%;
 padding-left:35px;
 font-size:1em;
 font-weight: 600;
-
 `
+
 const Description = styled.span`
 width:100vw;
 background: url("data:image/svg+xml;utf8,<svg viewBox='0 0 24 24' width='25' height='20' fill='white'  xmlns='http://www.w3.org/2000/svg'><path d='M9 21h-9v-2h9v2zm6.695-2.88l-3.314-3.13-1.381 1.47 4.699 4.54 8.301-8.441-1.384-1.439-6.921 7zm-6.695-1.144h-9v-2h9v2zm8-3.976h-17v-2h17v2zm7-4h-24v-2h24v2zm0-4h-24v-2h24v2z' /></svg>") no-repeat;
@@ -64,40 +69,73 @@ background: url("data:image/svg+xml;utf8,<svg viewBox='0 0 24 24' width='25' hei
 background-position: left 5px bottom 50%;
 padding-left:35px;
 font-size:1em;
-font-weight: 400;`;
+font-weight: 400;`
 
+
+const Button = styled.button`
+background: #ffffff url("data:image/svg+xml;utf8,<svg viewBox='0 0 24 24' width='24' 
+height='24' fill='black'  xmlns='http://www.w3.org/2000/svg'>
+<path d='M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z' /></svg>") no-repeat;
+background-position: left 5px bottom 50%;
+margin-left:0.5vw;
+padding:10px 10px 10px 35px;
+border:0;
+border-radius: 5px;
+font-size:0.90em;
+color:black;
+transition: 0.9s ease-in;
+:hover{background-color: #2E1138 ;}
+`
+
+;
+ 
 function ListTrip () {
+const trip = useRequestData("https://us-central1-labenu-apis.cloudfunctions.net/labeX/jaq/trips", {})
+
+const tripsDetails =
+    trip.trips &&
+    trip.trips.map((travel) => {
+      return  <Card>
+        <Name>{travel.name}</Name>
+        <Description>{travel.description}</Description>
+        <Planet> {travel.planet} </Planet>
+        <Time> {travel.durationInDays} </Time>
+        <Date>{travel.date} </Date>
+      </Card>;
+    });
+
+
 
     return <div> 
+
+
+
+    
+
+
+
+
     <Section>
     <H1>Lista de viagens</H1>
-        <Card>
-            <Name>Plutão é planeta sim</Name>
-            <Description>Desvende os mistérios de plutão </Description>
-            <Planet>Plutao</Planet>
-            <Time>52</Time>
-            <Date>2021-04-21</Date>
-                
-                </Card>
+
+{tripsDetails}
+
+
+       
                 
                 
-                <Card>
-            <Name>Plutão é planeta sim</Name>
-            <Description>Desvende os mistérios de plutão </Description>
-            <Planet>Plutao</Planet>
-            <Time>52</Time>
-            <Date>2021-04-21</Date>
+                <Button> <Link to="form" spy={true} smooth={true}>Inscreva-se </Link></Button>
                 
-                </Card>
-                
-                <Card>
-            <Name>Plutão é planeta sim</Name>
-            <Description>Desvende os mistérios de plutão </Description>
-            <Planet>Plutao</Planet>
-            <Time>52</Time>
-            <Date>2021-04-21</Date>
-                
-                </Card> </Section></div>
+        
+                </Section>
+
+                <div id="form">         
+<ApplicationForm />
+</div>
+        
+                    </div>
+    
+
 }
 
 
