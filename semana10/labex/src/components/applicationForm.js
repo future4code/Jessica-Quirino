@@ -1,5 +1,8 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
+import useInput from '../hooks/useInput'
+import useSend from '../hooks/useSend'
+import useRequestData from '../hooks/useRequest'
 
 const Section = styled.div`
 background: #961D41;
@@ -69,13 +72,59 @@ font-size:0.90em;
 color:white;
 font-weight:600;
 transition: 0.9s ease-in;
-:hover{background-color: #2E1138;
+:hover{background-color: #482B60;
 color:white}`
 ;
 
-
+	
 
 function ApplicationForm() {
+
+
+	const [name, handleName] = useInput()
+	const [age, handleAge] = useInput()
+	const [applicationText, handleApplicationText] = useInput()
+	const [profession, handleProfession] = useInput()
+	const [country, handleCountry] = useInput()
+	const [idTrip, handleIdTrip] = useInput()
+
+	const [body, setBody] = useState({})
+
+	
+	const tripId = useRequestData("https://us-central1-labenu-apis.cloudfunctions.net/labeX/jessica-alcantara-quirino-cruz/trips", {})
+
+/* 	useEffect(() => {
+	const newId =  tripId.trips && 
+	tripId.trips.map((travel) => {
+			return  travel.id
+		  });
+
+	   }, []); */
+
+	   const headers = {}
+
+	
+
+	const selecTrip =
+		tripId.trips &&
+		tripId.trips.map((travel) => {
+		  return  <option value={travel.id}> {travel.name}</option>
+		});
+
+
+	const submitButton = () => {
+		setBody({name, age, applicationText, profession, country})
+
+		console.log(idTrip)
+		}
+		
+		
+	
+		const trip = useSend("https://us-central1-labenu-apis.cloudfunctions.net/labeX/jessica-alcantara-quirino-cruz/trips/${idTrip}/apply", body, headers)
+		
+		
+
+
 
 return <div>
 
@@ -88,19 +137,21 @@ return <div>
 <h1>faça aqui sua inscrição</h1>
 
 
-<Input placeholder={"digite aqui seu nome"}/>
+<Input value={name} onChange={handleName}  placeholder={"digite aqui seu nome"}/>
 
-<Input placeholder={"digite aqui sua idade"}/>
+<Input value={age} onChange={handleAge}  placeholder={"digite aqui sua idade"}/>
 
-<Input placeholder={"digite aqui sua profissão"}/>
+<Input value={profession} onChange={handleProfession}  placeholder={"digite aqui sua profissão"}/>
 
-<Textarea placeholder={"digite aqui seu texto de aplicação"}/>
+<Textarea value={applicationText} onChange={handleApplicationText} placeholder={"digite aqui seu texto de aplicação"}/>
 
-<Select name="travel" id="travel">
-<option> API</option></Select>
+<Select value={idTrip} onChange={handleIdTrip}> {selecTrip}</Select>
 
-<Select name="country" id="country">
-	<option value="Brasil" selected="selected">Brasil</option>
+
+
+<Select value={country} onChange={handleCountry}  name="country" id="country">
+<option >escolha seu país</option>
+	<option value="Brasil">Brasil</option>
 	<option value="Afeganistão">Afeganistão</option>
 	<option value="África do Sul">África do Sul</option>
 	<option value="Albânia">Albânia</option>
@@ -353,7 +404,7 @@ return <div>
 </Select>
 <Clear />
  
-<ButtonSubmit> Enviar </ButtonSubmit>
+<ButtonSubmit onClick={submitButton}> Enviar </ButtonSubmit>
 
 
 </Align>

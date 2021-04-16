@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import styled from 'styled-components'
 import CreateTrip from '../components/createTrip'
 import {Link} from 'react-scroll'
 import useRequestData from '../hooks/useRequest'
+import useProtectedPage from '../hooks/useProtectPage'
+import axios from 'axios'
 
 
 const Main = styled.div`
@@ -108,15 +111,75 @@ const Clear = styled.div`
 
 const AdminHomePage = () => {
 
-const trip = useRequestData("https://us-central1-labenu-apis.cloudfunctions.net/labeX/jaq/trips", {})
+
+  const deleteTrip = async (id) => {
+    try {
+      const result = window.confirm("Deseja excluir o item");
+      if (result == true) {
+        const res = await axios.delete(
+          `https://us-central1-labenu-apis.cloudfunctions.net/labeX/jessica-alcantara-quirino-cruz/trips/${id}`,
+          {
+            headers: {
+              auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ilp3N0tNUEp2RmFqRmtmUlE4N3RBIiwiZW1haWwiOiJhc3Ryb2RldkBnbWFpbC5jb20uYnIiLCJpYXQiOjE2MTc5MDE4NDd9.yKi2emMJ-Ln3fNigx09HNZIDWPEhF8e_WnbYAAd1r2k"
+            }
+          }
+        );
+        
+        window.location.reload();
+
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+
+
+const trip = useRequestData("https://us-central1-labenu-apis.cloudfunctions.net/labeX/jessica-alcantara-quirino-cruz/trips", {})
 const tripsDetails =
     trip.trips &&
     trip.trips.map((travel) => {
       return  <Card>
         <Name>{travel.name}</Name>
-        <ButtonDelete> X </ButtonDelete>
+        <ButtonDelete onClick={() => deleteTrip(travel.id)}> X </ButtonDelete>
       </Card>;
     });
+
+
+      useProtectedPage();
+      const history = useHistory();
+    
+      useEffect(() => {
+        getLogin("rwXgyZFPWNYRo3KR2F9r");
+      }, []);
+    
+      const getLogin = (id) => {
+        const token = window.localStorage.getItem("token");
+    
+        axios
+          .get(
+            `https://us-central1-labenu-apis.cloudfunctions.net/labeX/jessica-alcantara-quirino-cruz/trip/${id}`,
+            {
+              headers: {
+                auth: token
+              }
+            }
+          )
+          .then((res) => {
+            console.log("ok")
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+    
+      const logout = () => {
+        window.localStorage.removeItem("token");
+        history.push("/loginpage");
+      };
+
+      
+
 
 return (<div> 
 
@@ -137,7 +200,7 @@ return (<div>
                 
     
                 <ButtonTravel> <Link  to="createTravels" spy={true} smooth={true}> Criar viagem</Link> </ButtonTravel>
-                <ButtonLogout> Sair </ButtonLogout>
+                <ButtonLogout onClick={logout}> Sair </ButtonLogout>
                 
 <Clear />
 

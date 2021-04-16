@@ -34,7 +34,7 @@ padding:10px 10px 10px 35px;
 border:0;
 border-radius: 5px;
 font-size:0.90em;
-color:black;
+color:white;
 font-weight:600;
 transition: 0.9s ease-in;
 :hover{background-color: #2E1138;
@@ -106,20 +106,7 @@ font-size:1em;
 font-weight: 400;`
 
 
-const Button = styled.button`
-background: #ffffff url("data:image/svg+xml;utf8,<svg viewBox='0 0 24 24' width='24' 
-height='24' fill='black'  xmlns='http://www.w3.org/2000/svg'>
-<path d='M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z' /></svg>") no-repeat;
-background-position: left 5px bottom 50%;
-margin-left:0.5vw;
-padding:10px 10px 10px 35px;
-border:0;
-border-radius: 5px;
-font-size:0.90em;
-color:black;
-transition: 0.9s ease-in;
-:hover{background-color: #2E1138 ;}`
-;
+
 
 
 function HomePage() {

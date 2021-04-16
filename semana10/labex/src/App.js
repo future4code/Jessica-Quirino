@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
 div{
   margin:0;
   padding:0;
+ 
 }
 body{
   background: #E7E4E7 url(${back}) no-repeat top right;

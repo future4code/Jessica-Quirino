@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import { useHistory } from "react-router-dom";
 
 
 
@@ -8,7 +8,8 @@ const Align = styled.div`
 width:80vw;
 margin: 0 auto;
 padding-left:1vw;
-padding-bottom: 10vh;`
+padding-top: 5vh;
+padding-bottom: 15vh;`
 
 
 const H2 = styled.h2`
@@ -42,7 +43,9 @@ transition: 0.9s ease-in;
 
 
 
-function errorPage() {
+function ErrorPage() {
+
+  const history = useHistory();
 
 return <div>
 
@@ -57,7 +60,7 @@ return <div>
 Tem certeza que digitou o endereço correto? Essa página não existe. 
 
 <Clear />
-<ButtonBack> Voltar </ButtonBack>
+<ButtonBack onClick={history.goBack}> Voltar </ButtonBack>
 
 
 </Align>
@@ -68,4 +71,4 @@ Tem certeza que digitou o endereço correto? Essa página não existe.
     
 }
 
-export default errorPage
+export default ErrorPage

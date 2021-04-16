@@ -1,5 +1,5 @@
 export const goToAdmin = (history) => {
-    history.push("/loginPage");
+    history.push("/AdminHomePage");
     };
 
     export const goToHome = (history) => {

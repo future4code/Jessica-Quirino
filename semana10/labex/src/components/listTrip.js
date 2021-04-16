@@ -84,13 +84,17 @@ border-radius: 5px;
 font-size:0.90em;
 color:black;
 transition: 0.9s ease-in;
-:hover{background-color: #2E1138 ;}
+:hover{background-color: #961D41;}
 `
+const Clear = styled.div`
+  flex-basis: 100%;
+  height: 5vh;`
+
 
 ;
  
 function ListTrip () {
-const trip = useRequestData("https://us-central1-labenu-apis.cloudfunctions.net/labeX/jaq/trips", {})
+const trip = useRequestData("https://us-central1-labenu-apis.cloudfunctions.net/labeX/jessica-alcantara-quirino-cruz/trips", {})
 
 const tripsDetails =
     trip.trips &&
@@ -122,7 +126,7 @@ const tripsDetails =
 
 
        
-                
+           <Clear/>    
                 
                 <Button> <Link to="form" spy={true} smooth={true}>Inscreva-se </Link></Button>
                 

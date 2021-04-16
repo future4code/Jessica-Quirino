@@ -3,21 +3,29 @@ import React, {useState, useEffect}  from 'react'
 import axios from 'axios'
 
 
-const useSend = (url, initialState) => {
-    const [data, setData] = useState(initialState)
-cont [body, setBody] = useState(initialState)
+
+const useSend = (url, body, headers) => {
 
 useEffect(() => {
-   axios
-   .get(url)
-   .then((res) =>{console.log(res.data)
-setData(res.data)})
-   .catch((err) => {console.log(err.data)})
+    axios
+    .post(url,
+           body,
+           {
+             headers
+           }
+         )
+         
+         .then((res) =>{console.log(window.alert("Envio Concluído!"))
+           body(res.data)
+            ;})
+              .catch((err) => {console.log(err.data)})
+        
+            }, [body]);
 
-  }, [url]);
-
-  return data
+            
+     
 
 }
+
 
 export default useSend

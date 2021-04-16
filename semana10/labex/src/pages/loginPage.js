@@ -1,5 +1,8 @@
-import React from 'react'
+
 import styled from 'styled-components'
+import React, { useState } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const Section = styled.div`
 background: #3C234A;
@@ -67,6 +70,42 @@ color:white}`
 
 function LoginPage () {
 
+
+    const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory()
+
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const login = () => {
+    const body = {
+      email: email,
+      password: password
+    };
+
+    axios
+      .post(
+        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/jessica-alcantara-quirino-cruz/login",
+        body
+      )
+      .then((res) => {
+        console.log(res.data);
+        window.localStorage.setItem('token', res.data.token)
+        history.push('/adminHomePage')
+      })
+      .catch((err) => {
+        console.log(window.alert("Dados incorretos"));
+      });
+  };
+
+
+
     return <div> 
 
 
@@ -81,11 +120,11 @@ function LoginPage () {
     <Section>
     <H1>Faça login</H1>
        
-    <Input placeholder={"e-mail"}/>
-    <Input placeholder={"senha"}/>
+    <Input value={email} onChange={handleEmail} placeholder={"e-mail"}/>
+    <Input value={password} onChange={handlePassword} placeholder={"senha"}/>
 
 <Clear/>
-<ButtonSubmit> Entrar </ButtonSubmit>
+<ButtonSubmit  onClick={login}> Entrar </ButtonSubmit>
 
                 </Section>
                     </div>
