@@ -7,6 +7,7 @@ import useRequestData from '../hooks/useRequest'
 import useProtectedPage from '../hooks/useProtectPage'
 import axios from 'axios'
 
+import { goToTrip } from '../routes/coordinator'
 
 const Main = styled.div`
 width:80vw;
@@ -110,7 +111,13 @@ const Clear = styled.div`
 ;
 
 const AdminHomePage = () => {
+  const history = useHistory();
 
+  const goToTrip = (id) => {
+    history.push(`/tripDetailPage/${id}`);
+    };
+
+ 
 
   const deleteTrip = async (id) => {
     try {
@@ -140,14 +147,14 @@ const tripsDetails =
     trip.trips &&
     trip.trips.map((travel) => {
       return  <Card>
-        <Name>{travel.name}</Name>
+        <Name key={travel.id} onClick={ ()=> goToTrip(travel.id)}> {travel.name}</Name>
         <ButtonDelete onClick={() => deleteTrip(travel.id)}> X </ButtonDelete>
       </Card>;
     });
 
 
       useProtectedPage();
-      const history = useHistory();
+  
     
       useEffect(() => {
         getLogin("rwXgyZFPWNYRo3KR2F9r");

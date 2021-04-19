@@ -1,12 +1,10 @@
 export const goToAdmin = (history) => {
-    history.push("/AdminHomePage");
-    };
+history.push("/AdminHomePage");
+};
 
-    export const goToHome = (history) => {
-        history.push("/");
-        };
+export const goToHome = (history) => {
+history.push("/");
+};
     
-    
-        
-
+      
 

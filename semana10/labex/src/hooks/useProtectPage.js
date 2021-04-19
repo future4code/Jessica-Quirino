@@ -2,15 +2,15 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 export const useProtectedPage = () => {
-  const history = useHistory();
+const history = useHistory();
 
-  useEffect(() => {
-    const token = window.localStorage.getItem("token");
+useEffect(() => {
+const token = window.localStorage.getItem("token");
 
-    if (!token) {
-      history.push("/loginPage");
-    }
-  }, [history]);
+if (!token) {
+history.push("/loginPage");
+}
+}, [history]);
 };
 
 

@@ -4,23 +4,19 @@ import {Link} from 'react-scroll'
 import ApplicationForm from "./applicationForm"
 import useRequestData from '../hooks/useRequest'
 
-
-
 const Section = styled.div`
 background: #180E3B;
-width:100vwvw;
 padding: 10vh 0 10vh 0;
 margin-top:10vh;
 display:flex;
 flex-wrap:wrap;
 justify-content: center;
 align-items:center;
-align-content:center`
+align-content:center;`
 
 const H1 = styled.h1`
 width:100vw;
-text-align:center;
-`
+text-align:center;`
 
 const Card = styled.div`
 background: #961D41;
@@ -39,8 +35,7 @@ xmlns='http://www.w3.org/2000/svg'><path d='M11 6.999c2.395.731 4.27 2.607 4.999
 background-position: left 5px bottom 50%;
 padding-left:35px;
 font-size:1em;
-font-weight: 600;
-`
+font-weight: 600;`
 
 const Description = styled.span`
 width:100vw;
@@ -71,7 +66,6 @@ padding-left:35px;
 font-size:1em;
 font-weight: 400;`
 
-
 const Button = styled.button`
 background: #ffffff url("data:image/svg+xml;utf8,<svg viewBox='0 0 24 24' width='24' 
 height='24' fill='black'  xmlns='http://www.w3.org/2000/svg'>
@@ -84,60 +78,48 @@ border-radius: 5px;
 font-size:0.90em;
 color:black;
 transition: 0.9s ease-in;
-:hover{background-color: #961D41;}
-`
+:hover{background-color: #961D41;}`
+
 const Clear = styled.div`
-  flex-basis: 100%;
-  height: 5vh;`
-
-
-;
+flex-basis: 100%;
+height: 5vh;`
  
+
 function ListTrip () {
 const trip = useRequestData("https://us-central1-labenu-apis.cloudfunctions.net/labeX/jessica-alcantara-quirino-cruz/trips", {})
-
+ 
 const tripsDetails =
-    trip.trips &&
-    trip.trips.map((travel) => {
-      return  <Card>
-        <Name>{travel.name}</Name>
-        <Description>{travel.description}</Description>
-        <Planet> {travel.planet} </Planet>
-        <Time> {travel.durationInDays} </Time>
-        <Date>{travel.date} </Date>
-      </Card>;
+trip.trips &&
+trip.trips.map((travel) => {
+
+return  <Card>
+<Name>{travel.name}</Name>
+<Description>{travel.description}</Description>
+<Planet> {travel.planet} </Planet>
+<Time> {travel.durationInDays} </Time>
+<Date>{travel.date} </Date>
+</Card>;
     });
 
+return <div> 
 
 
-    return <div> 
-
-
-
-    
-
-
-
-
-    <Section>
-    <H1>Lista de viagens</H1>
+<Section>
+<H1>Lista de viagens</H1>
 
 {tripsDetails}
 
-
-       
-           <Clear/>    
+<Clear/>    
+    
+    
+<Button> <Link to="form" spy={true} smooth={true}>Inscreva-se </Link></Button>
                 
-                <Button> <Link to="form" spy={true} smooth={true}>Inscreva-se </Link></Button>
-                
-        
-                </Section>
+</Section>
 
-                <div id="form">         
+<div id="form">         
 <ApplicationForm />
 </div>
-        
-                    </div>
+</div>
     
 
 }

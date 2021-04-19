@@ -56,6 +56,7 @@ width:100vw;
 text-align:center;
 `
 
+
 const Card = styled.div`
 background: #961D41;
 margin: 2vw;

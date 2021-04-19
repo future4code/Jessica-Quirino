@@ -1,5 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import useRequestData from '../hooks/useRequest'
+import { useParams, useHistory } from 'react-router-dom'
+
+const Main = styled.div`
+width:80vw;
+margin:0 auto;
+margin-top:10vh;`
+
 
 const Section = styled.div`
 background: #180E3B;
@@ -14,6 +22,11 @@ color:white;`
 const H1 = styled.h1`
 width:100vw;
 text-align:center;
+`
+const H2 = styled.h2`
+text-align:left;
+padding-left:1vw;
+font-size:30px;
 `
 
 const Card = styled.div`
@@ -89,31 +102,73 @@ transition: 0.9s ease-in;
 
 function TripDetail () {
 
+const params = useParams()
+const headers = {
+auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Im93T2g5ZWo2bW50akZqNUNRMVB4IiwiZW1haWwiOiJhc3Ryb2RldkBnbWFpbC5jb20uYnIiLCJpYXQiOjE1ODk1NjI5MDh9.aB4dNbTCkToXB7pdzEa-tuMa-QbRQDUd93eva4-cec0"
+}
+
+
+const history = useHistory()
+
+const trips =useRequestData(
+  `https://us-central1-labenu-apis.cloudfunctions.net/labeX/jessica-alcantara-quirino-cruz/trip/${params.id}`,
+  {}, headers)
+  
+
+  const candidatesList =
+  trips.trip &&
+  trips.trip.candidates.map((user) => {
+   return <li> {user.name} </li>
+      });
+
+      const approvedList =
+      trips.trip &&
+      trips.trip.approved.map((user) => {
+        return <li> {user.name} </li>
+          });
+
+
+
+console.log(trips)
+ 
+  
     return <div> 
+
+
+<Main>
+
+<H2>Detalhes da página</H2>
+</Main>
+
 
     <Section>
     <H1>Detalhes da viagem</H1>
        
+{trips.trip && <Card>
+<Name>{trips.trip.name}</Name>
+<Description>{trips.trip.description}</Description>
+<Planet> {trips.trip.planet} </Planet>
+<Time> {trips.trip.durationInDays} </Time>
+<Date>{trips.trip.date} </Date>
+</Card> }
+            
                 
-    <Card>
-            <Name>Plutão é planeta sim</Name>
-            <Description>Desvende os mistérios de plutão </Description>
-            <Planet>Plutao</Planet>
-            <Time>52</Time>
-            <Date>2021-04-21</Date>
-                
-                </Card>
-                
-                <Clear />
+<Clear />
 
-                <H1>Candidatos aprovados</H1>
+<H1>Candidatos</H1>
 
-                <ul>
-                <li>aluno labenu 1</li>
-                <li>aluno labenu 1</li>
-                </ul>
-                <Clear />
-                <ButtonBack> Voltar </ButtonBack></Section>
+{trips.trip &&  <ul> {candidatesList} </ul> }
+<Clear />
+
+<H1>Candidatos aprovados</H1>
+
+
+{trips.trip &&  <ul> {approvedList} </ul> }
+<Clear />
+
+
+
+<ButtonBack onClick={history.goBack}> Voltar </ButtonBack></Section>
                     </div>
 }
 

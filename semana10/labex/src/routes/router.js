@@ -3,40 +3,38 @@ import HomePage from '../pages/homePage';
 import AdminHomePage from '../pages/adminHomePage'
 import ErrorPage from '../pages/errorPage.js'
 import LoginPage from '../pages/loginPage'
-import TripDetail from '../pages/tripeDetailPage'
+import TripDetail from '../pages/tripDetailPage'
 import Header from '../components/header'
 import { BrowserRouter, Switch, Route, useHistory} from "react-router-dom"
 
 function Router(){
-
-    return <div>
+return <div>
 <BrowserRouter>
 <Header/>
 <Switch>
 
-  <Route exact path="/">
-  <HomePage/>
-    </Route>
+<Route exact path="/">
+<HomePage/>
+</Route>
     
-    <Route exact path="/adminHomePage">
-    <AdminHomePage/>
-    </Route>
+<Route exact path="/adminHomePage">
+<AdminHomePage/>
+</Route>
 
-    <Route exact path="/tripDetail">
-    <TripDetail/>
-    </Route>
+<Route exact path="/loginPage">
+<LoginPage/>
+</Route>
 
-    <Route exact path="/loginPage">
-    <LoginPage/>
-    </Route>
+<Route exact path="/tripDetailPage/:id">
+<TripDetail/>
+</Route>
 
-    <Route>
-    <ErrorPage/>
-    </Route>
+<Route>
+<ErrorPage/>
+</Route>
+</Switch>
+</BrowserRouter>
 
-
-    </Switch>
-    </BrowserRouter>
 </div>
 }
 
