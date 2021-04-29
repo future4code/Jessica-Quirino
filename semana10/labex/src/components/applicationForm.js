@@ -87,31 +87,29 @@ const headers = {}
 const selecTrip =
 tripId.trips &&
 tripId.trips.map((travel) => {
+	
 return  <option value={travel.id}> {travel.name}</option>
+
 });
 
-
-const submitButton = () => {
+const submitButton = (event) => {
 setBody({name, age, applicationText, profession, country})
 console.log(idTrip)
+event.preventDefault()
 }
-		
-const trip = useSend("https://us-central1-labenu-apis.cloudfunctions.net/labeX/jessica-alcantara-quirino-cruz/trips/${idTrip}/apply", body, headers)
-		
+	
+const trip = useSend(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/jessica-alcantara-quirino-cruz/trips/${idTrip}/apply`, 
+body, headers)	
 
-return <div>
-
-<Section>
-<Align>
-
+return <div><Section><Align>
 <h1>faça aqui sua inscrição</h1>
-
-<Input value={name} onChange={handleName}  placeholder={"digite aqui seu nome"}/>
-<Input value={age} onChange={handleAge}  placeholder={"digite aqui sua idade"}/>
-<Input value={profession} onChange={handleProfession}  placeholder={"digite aqui sua profissão"}/>
-<Textarea value={applicationText} onChange={handleApplicationText} placeholder={"digite aqui seu texto de aplicação"}/>
+<form onSubmit={submitButton}>
+<Input value={name} onChange={handleName} type={"text"} placeholder={"digite aqui seu nome"} pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,40}$" title="Digite seu nome completo" required/>
+<Input value={age} onChange={handleAge} type={"number"} placeholder={"digite aqui sua idade"} required/>
+<Input value={profession} onChange={handleProfession} type={"text"}  placeholder={"digite aqui sua profissão"} pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,40}$" title="Digite seu nome completo" required/>
+<Textarea value={applicationText} onChange={handleApplicationText}  type={"text"} placeholder={"digite aqui seu texto de aplicação"} pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,40}$" title="Explique porque você deveria ir" required/>
 <Select value={idTrip} onChange={handleIdTrip}> {selecTrip}</Select>
-<Select value={country} onChange={handleCountry}  name="country" id="country">
+<Select name={"country"} id={"country"} onChange={handleCountry}  >
 <option >escolha seu país</option>
 	<option value="Brasil">Brasil</option>
 	<option value="Afeganistão">Afeganistão</option>
@@ -366,9 +364,9 @@ return <div>
 </Select>
 <Clear />
  
-<ButtonSubmit onClick={submitButton}> Enviar </ButtonSubmit>
+<ButtonSubmit> Enviar </ButtonSubmit>
 
-
+</form>
 </Align>
 </Section>
 </div>

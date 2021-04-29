@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import useInput from "../hooks/useInput"
 
 const Section = styled.div`
 background: #3C234A;
@@ -34,7 +35,7 @@ font-size:25px;
 
 const Input = styled.input`
 border:0;
-width:50%;
+width:95%;
 margin:1vh;
 padding:15px;
 border-radius:5px;
@@ -49,7 +50,6 @@ const Clear = styled.div`
 
 
 const ButtonSubmit = styled.button`
-
 
 background: #961D41 url("data:image/svg+xml;utf8,<svg viewBox='0 0 24 24' width='24' 
 height='24' fill='white'  xmlns='http://www.w3.org/2000/svg'>
@@ -71,19 +71,13 @@ color:white}`
 function LoginPage () {
 
 
-    const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  
+  const [email, handleEmail] = useInput()
+const [password, handlePassword] = useInput()
   const history = useHistory()
 
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
 
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const login = () => {
+  const login = (event) => {
     const body = {
       email: email,
       password: password
@@ -102,7 +96,9 @@ function LoginPage () {
       .catch((err) => {
         console.log(window.alert("Dados incorretos"));
       });
-  };
+  
+      event.preventDefault()
+      };
 
 
 
@@ -120,12 +116,13 @@ function LoginPage () {
     <Section>
     <H1>Faça login</H1>
        
-    <Input value={email} onChange={handleEmail} placeholder={"e-mail"}/>
-    <Input value={password} onChange={handlePassword} placeholder={"senha"}/>
+       <form onSubmit={login}>
+    <Input value={email} onChange={handleEmail} type={"email"} placeholder={"e-mail"}/>
+    <Input value={password} onChange={handlePassword} type={"password"} placeholder={"senha"}/>
 
 <Clear/>
-<ButtonSubmit  onClick={login}> Entrar </ButtonSubmit>
-
+<ButtonSubmit> Entrar </ButtonSubmit>
+</form>
                 </Section>
                     </div>
 }

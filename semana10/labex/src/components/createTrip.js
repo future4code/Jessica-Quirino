@@ -63,8 +63,9 @@ const [description, handleDescription] = useInput()
 const [durationInDays, handleDurationInDays] = useInput()
 const [body, setBody] = useState({})
 
-const submitButton = () => {
+const submitButton = (event) => {
 setBody({name, planet, date, description, durationInDays})
+event.preventDefault()
 }
 
 const headers = {
@@ -79,12 +80,16 @@ return <div>
 <Align>
 <h1>Criar uma viagem</h1>
 
-<Input value={name} onChange={handleName} placeholder={"digite aqui um nome"}/>
-<Input value={planet} onChange={handlePlanet}  placeholder={"digite aqui o planeta"}/>
-<Input value={date} onChange={handleDate}  type="date" placeholder={"escolha a data"}/>
-<Input value={durationInDays} onChange={handleDurationInDays}  type="number" placeholder={"qual tempo de duração da viagem?"}/>
-<Textarea  value={description} onChange={handleDescription}  placeholder={"digite aqui a descrição"}/>
-<ButtonSubmit onClick={submitButton}> Enviar </ButtonSubmit>
+
+<form onSubmit={submitButton}>
+<Input value={name} onChange={handleName} type={"text"} placeholder={"digite aqui um nome"} required/>
+<Input value={planet} onChange={handlePlanet} type={"text"} placeholder={"digite aqui o planeta"} required/>
+<Input value={date} onChange={handleDate} type={"date"} placeholder={"escolha a data"} required/>
+<Input value={durationInDays} onChange={handleDurationInDays} type={"number"} placeholder={"qual tempo de duração da viagem?"} required/>
+<Textarea  value={description} onChange={handleDescription} type={"text"} placeholder={"digite aqui a descrição"} required/>
+<ButtonSubmit> Enviar </ButtonSubmit>
+</form>
+
 </Align>
 </Section>
 
