@@ -17,13 +17,12 @@ text-align:center;
 color:white;
 }`
 
-
 const H1 = styled.h1`
 width:100vw;
 text-align:center;
 color: #ffffff;
-font-size:18px;
-`
+font-size:18px;`
+
 const Input = styled.input`
 border:0;
 width:85%;
@@ -55,53 +54,51 @@ color:white}`;
 
 function FormLogin() {
 
-	const [email, handleEmail] = useInput()
-	const [password, handlePassword] = useInput()
-	  const history = useHistory()
+const [email, handleEmail] = useInput()
+const [password, handlePassword] = useInput()
+const history = useHistory()
 	
-	
-	  const login = (event) => {
-		const body = {
-		  email: email,
-		  password: password
-		};
-	
-		axios
-		  .post(
-			"https://us-central1-labenu-apis.cloudfunctions.net/labEddit/login ",
-			body
-		  )
-		  .then((res) => {
-			console.log(res.data);
-			window.localStorage.setItem('token', res.data.token)
-			history.push('/userPage')
-		  })
-		  .catch((err) => {
-			console.log(window.alert("Dados incorretos"));
-		  });
+const login = (event) => {
+	const body = {
+	  email: email,
+	  password: password
+	};
+
+	axios
+	  .post(
+		"https://us-central1-labenu-apis.cloudfunctions.net/labEddit/login ",
+		body
+	  )
+	  .then((res) => {
+		console.log(res.data);
+		window.localStorage.setItem('token', res.data.token)
+		history.push('/userPage')
+	  })
+	  .catch((err) => {
+		console.log(window.alert("Dados incorretos"));
+	  });
+  
+	  event.preventDefault()
+	  };
+
+ 
 	  
-		  event.preventDefault()
-		  };
 	
+return (
 
-		  
-
- return <div>
-
-
+<div>
 <Section>
-    <H1>Faça login</H1>
-       
-       <form onSubmit={login}>
-    <Input value={email} onChange={handleEmail} type={"email"} placeholder={"e-mail"}/>
-    <Input value={password} onChange={handlePassword} type={"password"} placeholder={"senha"}/>
-
+<H1>Faça login</H1>
+<form onSubmit={login}>
+<Input value={email} onChange={handleEmail} type={"email"} placeholder={"e-mail"}/>
+<Input value={password} onChange={handlePassword} type={"password"} placeholder={"senha"}/>
 <Clear/>
 <ButtonSubmit> Entrar </ButtonSubmit>
 </form>
-                </Section>
+</Section>
 </div>
-    
-    
+
+)  
 }
+
 export default FormLogin

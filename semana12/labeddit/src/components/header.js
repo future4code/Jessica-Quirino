@@ -1,4 +1,3 @@
-
 import logo from '../img/logo.png'
 import styled from 'styled-components'
 import { useHistory } from "react-router-dom";
@@ -10,18 +9,18 @@ background:white;
 box-shadow: 0px 3px 8px -1px rgba(0,0,0,0.45);
 width:98vw;
 padding: 1vw;
+margin:0;
 display:flex; 
 justify-content: space-around;`
 
 const Logo = styled.div`
-width:50vw;
-padding-top:8px;
-`
+width:45vw;
+padding-top:8px;`
+
 const Buttons = styled.div`
 width:30vw;
 display:flex;
-justify-content: flex-end;
-`
+justify-content: flex-end;`
 
 const ButtonLogin = styled.button`
 border:0;
@@ -48,26 +47,28 @@ transition: 1s ease-in;
 color:white;}`;
 
 const Header = () => {
+
 const history = useHistory()
 
-    return (<div> 
-    
-    <Nav><Logo onClick={()=> goToHome(history)}><img src={logo}/></Logo>
-    
+return (
 
-    <Buttons>   <ButtonLogin onClick={()=> goToLogin(history)}>
-       Login
-    </ButtonLogin>
+<div> 
+<Nav>
 
-    <ButtonSign onClick={()=> goToHome(history)}>Cadastro</ButtonSign>
-    </Buttons>
- 
-    </Nav>
-                        </div>
-        )
-                    
-    }
-    
-    
-    export default Header
+<Logo onClick={()=> goToHome(history)}><img src={logo}/></Logo>
+
+<Buttons>
+<ButtonLogin onClick={()=> goToLogin(history)}>
+Login
+</ButtonLogin>
+<ButtonSign onClick={()=> goToHome(history)}>Cadastro</ButtonSign>
+</Buttons>
+
+</Nav>
+</div>
+
+)
+}
+
+export default Header
     

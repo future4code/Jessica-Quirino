@@ -9,5 +9,4 @@ setValue(e.target.value)
 return [value, handleValue]
 }
 
-
 export default useInput

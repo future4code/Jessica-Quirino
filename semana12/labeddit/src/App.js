@@ -2,7 +2,6 @@ import Router from './routes/router'
 import { createGlobalStyle } from 'styled-components'
 import "./assets/css/fonts.css";
 
-
 const GlobalStyle = createGlobalStyle`
 
 div{
@@ -16,8 +15,13 @@ font-family: 'Montserrat', sans-serif;
 }
 
 button, input, textarea, select{
-  font-family: 'Montserrat', sans-serif;
+font-family: 'Montserrat', sans-serif;
 color: #180E3B;
+}
+
+button{
+background: none;
+border:0
 }
 
 ::placeholder{color: #180E3B;
@@ -37,16 +41,18 @@ font-size:30px;
 color:white;
 }
 
-
 }`
 
 function App() {
-  return (<div>
+return (
 
+<div>
 <GlobalStyle />
 <Router/>
 </div>
-  );
+
+);
 }
+
 
 export default App;

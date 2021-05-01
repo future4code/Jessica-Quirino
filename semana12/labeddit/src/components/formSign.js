@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 import useInput from '../hooks/useInput'
-import useSend from '../hooks/useSend'
-import useRequestData from '../hooks/useRequest'
+import useRequestPost from '../hooks/useRequestPost'
 import { useHistory } from 'react-router-dom';
 import { goToLogin } from '../routes/coordinator'
 
@@ -19,13 +18,12 @@ text-align:center;
 color:white;
 }`
 
-
 const H1 = styled.h1`
 width:100vw;
 text-align:center;
 color: #ffffff;
-font-size:18px;
-`
+font-size:18px;`
+
 const Input = styled.input`
 border:0;
 width:85%;
@@ -66,45 +64,39 @@ padding:0;
 margin-left:5px;
 `;
 
-
-
 const FormSign = () => {
+
 const [username, handleName] = useInput()
 const [email, handleEmail] = useInput()
 const [password, handlePass] = useInput()
 const [body, setBody] = useState({})
 const history = useHistory();
-
-
 const headers = {}
-
 
 const submitButton = (event) => {
 setBody({email, password, username})
 event.preventDefault()
 }
-	
-const trip = useSend("https://us-central1-labenu-apis.cloudfunctions.net/labEddit/signup", 
+
+const signIn = useRequestPost("https://us-central1-labenu-apis.cloudfunctions.net/labEddit/signup", 
 body, headers)	
 
 return (
-    <div><Section> 
+
+<div>
+<Section> 
 <H1>cadastre-se e aproveite as funcionalidades</H1>
 <form onSubmit={submitButton}>
 <Input value={username} onChange={handleName} type={"text"} placeholder={"Digite aqui seu nome"} pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,40}$" title="Digite seu nome completo" required/>
 <Input value={email} onChange={handleEmail} type={"email"} placeholder={"Digite aqui um e-mail"} required/>
 <Input value={password} onChange={handlePass} type={"password"} placeholder={"Digite aqui uma senha"} required/>
-
-
 <Clear />
- 
 <ButtonSubmit> Cadastrar </ButtonSubmit> Já tem uma conta? <ButtonLogin onClick={()=> goToLogin(history)}>faça login</ButtonLogin>
-
 </form>
- 
 </Section>
 </div>
-)
-    
+
+)   
 }
+
 export default FormSign
