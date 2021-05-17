@@ -52,14 +52,15 @@ const Credit = styled.div`
   padding-bottom: 5px;
 `;
 
-const Caixa = styled.div`
+const Box = styled.div`
   width: 60%;
   padding: 5%;
   margin: 0px auto;
   border: 3px dotted black;
-margin-top:8%;
+margin-top:5%;
 margin-bottom:8%;
 `;
+
 
 const Input = styled.input`
   padding: 10px;
@@ -71,7 +72,7 @@ const Input = styled.input`
   font-family: "Montserrat", sans-serif;
 `;
 
-const Botao = styled.button`
+const Buttonstyle = styled.button`
   margin: 10px;
   padding: 10px;
   background: black;
@@ -126,7 +127,7 @@ class CreatePlaylists extends React.Component {
         <h2>
         <FontAwesomeIcon icon="play" /> Crie sua playlist
         </h2>
-        <Caixa>
+        <Box>
           <label>
             Nome da sua playlist
             <Input
@@ -136,8 +137,8 @@ class CreatePlaylists extends React.Component {
             />
           </label>
         
-          <Botao onClick={this.createPlaylist}>salvar</Botao>
-        </Caixa>
+          <Buttonstyle onClick={this.createPlaylist}>salvar</Buttonstyle>
+        </Box>
       
 
         <Credit>
